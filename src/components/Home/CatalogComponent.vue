@@ -2,7 +2,7 @@
 <section>
   <h2>Products</h2>
   <ul>
-    <li v-for="product in products" :key="product.id">{{ product.name }}</li>
+    <li v-for="product in products" :key="product.id">{{ product.name }} </li>
   </ul>
   <h2>Categories</h2>
   <ul>

@@ -16,12 +16,20 @@ export default createStore({
   },
   actions: {
     async fetchProducts({ commit }) {
-      const products = await DataService.fetchProducts();
-      commit('setProducts', products);
+      try {
+        const products = await DataService.fetchProducts();
+        commit('setProducts', products);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
     },
     async fetchCategories({ commit }) {
-      const categories = await DataService.fetchCategories();
-      commit('setCategories', categories);
+      try {
+        const categories = await DataService.fetchCategories();
+        commit('setCategories', categories);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
     }
   }
 });
