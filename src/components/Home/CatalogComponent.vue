@@ -1,29 +1,30 @@
 <template>
 <section>
-  <div>
-    Catalog
-  </div>
+  <h2>Products</h2>
+  <ul>
+    <li v-for="product in products" :key="product.id">{{ product.name }}</li>
+  </ul>
+  <h2>Categories</h2>
+  <ul>
+    <li v-for="category in categories" :key="category.id">{{ category.name }}</li>
+  </ul>
 </section>
 </template>
 <script>
-import { DataService, EventBus } from '@/services/DataJsonService.js'
+
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
-  data() {
+  setup() {
+    const store = useStore();
+    const products = computed(() => store.state.products);
+    const categories = computed(() => store.state.categories);
+
     return {
-      localData: []
-    }
-  },
-  created() {
-    this.localData = DataService.data.products;
-    EventBus.$on('data-updated', (newData) => {
-      this.localData = newData.products;
-    });
-  },
-  computed: {
-    categories() {
-      return DataService.data.categories;
-    },
+      products,
+      categories
+    };
   }
 }
 </script>

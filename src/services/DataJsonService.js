@@ -1,13 +1,14 @@
 
-import Vue from 'vue';
-
-export const EventBus = new Vue();
+import axios from 'axios';
 
 export const DataService = {
-  data: { products: [], categories: [] },
-
-  setData(newData) {
-    this.data = newData;
-    EventBus.$emit('data-updated', newData);
+  async fetchProducts() {
+    const response = await axios.get('/api/products.json');
+    return response.data;
   },
+
+  async fetchCategories() {
+    const response = await axios.get('/api/categories.json');
+    return response.data;
+  }
 };
