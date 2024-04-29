@@ -1,12 +1,26 @@
 <template>
 <section>
-  <h2>Products</h2>
-  <ul>
+  <h2>Items</h2>
+  <div>
 
-  </ul>
-  <h2>Categories</h2>
-  <ul>
-
-  </ul>
+  </div>
 </section>
 </template>
+<script>
+
+export default {
+  data(){
+    return{
+      Products: [],
+    }
+  },
+  created() {
+    this.getProducts();
+  },
+  methods: {
+    async getProducts(){
+
+    }
+  }
+}
+</script>
