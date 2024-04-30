@@ -1,12 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store';
+import { firebaseApp } from '@/firebase.js'
 
-store.dispatch('fetchProducts');
-store.dispatch('fetchCategories');
 const app = createApp(App)
 
+firebaseApp;
+
 app.use(router)
-app.use(store)
 app.mount('#app')
