@@ -1,29 +1,39 @@
 <template>
   <div>
-    Import data from XML
-    <div>
-      <input type="text">
-    </div>
+    <h1>Додати категорію</h1>
+    <form @submit.prevent="addCategory">
+      <div class="form-group">
+        <label for="categoryName">Назва категорії:</label>
+        <input type="text" id="categoryName" v-model="categoryName" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Додати</button>
+    </form>
   </div>
 </template>
-<script>
-import { saveDataToFirebase } from '@/services/FirebaseServices.js';
 
-export default {
-  data(){
-    return{
-      parsedData: null
-    }
-  },
-  setup() {
-    const handleXMLData = async (xmlData, categories) => {
-       this.parsedData = await saveDataToFirebase(xmlData, categories);
-      // Виконайте необхідні дії з parsedData
-    };
+<script setup>
+import { ref } from 'vue';
+import { database } from '@/firebase.js';
+import {
+  addDoc,
+  collection,
+} from "firebase/firestore";
 
-    return {
-      handleXMLData
-    };
+const categoryName = ref('');
+
+const addCategory = async () => {
+  if (!categoryName.value) {
+    console.error('Category name cannot be empty');
+    return;
+  }
+
+  try {
+    const categoriesRef = collection(database, 'categories');
+    const docRef = await addDoc(categoriesRef, { name: categoryName.value });
+    console.log('Category added with ID: ', docRef.id);
+    categoryName.value = '';
+  } catch (error) {
+    console.error('Error adding category: ', error);
   }
 };
 </script>
