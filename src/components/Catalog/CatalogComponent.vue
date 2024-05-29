@@ -20,21 +20,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { database } from '@/firebase.js';
-import { getDocs, collection } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 
 const categories = ref([]);
 const products = ref([]);
 
-const getCategories = async () => {
-  const querySnapshot = await getDocs(collection(database, 'categories'));
-  categories.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+let unsubscribeCategories = null;
+let unsubscribeProducts = null;
+
+const getCategories = () => {
+  const categoriesCollection = collection(database, 'categories');
+  unsubscribeCategories = onSnapshot(categoriesCollection, (querySnapshot) => {
+    categories.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  });
 };
 
-const getProducts = async () => {
-  const querySnapshot = await getDocs(collection(database, 'products'));
-  products.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+const getProducts = () => {
+  const productsCollection = collection(database, 'products');
+  unsubscribeProducts = onSnapshot(productsCollection, (querySnapshot) => {
+    products.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  });
 };
 
 const getCategoryName = (categoryId) => {
@@ -46,4 +53,10 @@ onMounted(() => {
   getCategories();
   getProducts();
 });
+
+onUnmounted(() => {
+  if (unsubscribeCategories) unsubscribeCategories();
+  if (unsubscribeProducts) unsubscribeProducts();
+});
 </script>
+

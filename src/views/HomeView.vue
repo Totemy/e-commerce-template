@@ -1,15 +1,18 @@
 <template>
   <main>
-    <Catalog />
+    <div>
+      <h1>{{ title }}</h1>
 
+    </div>
   </main>
 </template>
 <script>
-import Catalog from '@/components/Catalog/CatalogComponent.vue'
-export default {
-  components: {
-    Catalog,
 
+export default {
+  data(){
+    return{
+      title: 'Shop cart'
+    }
   }
 }
 
