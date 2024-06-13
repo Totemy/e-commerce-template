@@ -1,20 +1,31 @@
 <template>
   <main>
-    <ImportCategory/>
-    <ImportProduct/>
-    <Catalog />
+    <div>
+      <div>
+        Carousel with images
+      </div>
+      <div>
 
+      </div>
+      <div>
+        <CategoryView/>
+      </div>
+      <div>
+
+      </div>
+    </div>
   </main>
 </template>
 <script>
-import Catalog from '../components/Home/CatalogComponent.vue'
-import ImportCategory from '@/components/Admin/ImportCategory.vue'
-import ImportProduct from '@/components/Admin/ImportProduct.vue'
+
+import CategoryView from '@/components/Home/CategoryView.vue'
+
 export default {
-  components: {
-    ImportProduct,
-    Catalog,
-    ImportCategory
+  components: { CategoryView },
+  data(){
+    return{
+
+    }
   }
 }
 

@@ -1,10 +1,14 @@
 <template>
   <div>
-    <h1>Додати категорію</h1>
+    <h1>Add category</h1>
     <form @submit.prevent="addCategory">
       <div class="form-group">
-        <label for="categoryName">Назва категорії:</label>
+        <label for="categoryName">Name category :</label>
         <input type="text" id="categoryName" v-model="categoryName" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="categoryName">Image source:</label>
+        <input type="text" id="categoryImage" v-model="categoryImage" class="form-control">
       </div>
       <button type="submit" class="btn btn-primary">Додати</button>
     </form>
@@ -20,6 +24,7 @@ import {
 } from "firebase/firestore";
 
 const categoryName = ref('');
+const categoryImage = ref('');
 
 const addCategory = async () => {
   if (!categoryName.value) {
@@ -29,7 +34,7 @@ const addCategory = async () => {
 
   try {
     const categoriesRef = collection(database, 'categories');
-    const docRef = await addDoc(categoriesRef, { name: categoryName.value });
+    const docRef = await addDoc(categoriesRef, { name: categoryName.value , image: categoryImage.value });
     console.log('Category added with ID: ', docRef.id);
     categoryName.value = '';
   } catch (error) {
