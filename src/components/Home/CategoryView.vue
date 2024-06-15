@@ -9,11 +9,13 @@
         </h4>
       </div>
 
-      <div class="home-category__list" v-for="category in categories" :key="category.id">
-        <div class="home-category__item">
+      <div class="category-view__list" >
+        <div class="category-view__item" v-for="category in categories" :key="category.id">
+          <img class="category-view__img" :src="category.image" alt="{{category.name}}"/>
+          <div class="category-view__overlay">
             <h3>{{category.name}}</h3>
-            <button>Shop now -></button>
-            <img class="home-category__img" :src="category.image" alt="{{category.name}}"/>
+            <button class="category-view__btn">Shop now -></button>
+          </div>
         </div>
       </div>
     </div>
