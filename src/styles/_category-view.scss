@@ -1,0 +1,16 @@
+.category-view {
+  &__title{
+    font-size: 72px;
+    font-weight: 500;
+    &-span{
+      color: $n-4-color;
+    }
+  }
+  &__subtext{
+    color: $n-4-color;
+    &-span{
+      color: $n-5-color;
+    }
+  }
+
+}

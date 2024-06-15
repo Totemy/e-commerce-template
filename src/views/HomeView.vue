@@ -1,18 +1,21 @@
 <template>
-  <main>
-    <div>
-      <div>
-        Carousel with images
-      </div>
-      <div>
+  <main >
+    <div class="container">
+      <div class="home">
+        <div>
+          Carousel with images
+        </div>
+        <div>
 
-      </div>
-      <div>
-        <CategoryView/>
-      </div>
-      <div>
+        </div>
+        <div>
+          <CategoryView/>
+        </div>
+        <div>
 
+        </div>
       </div>
+
     </div>
   </main>
 </template>
