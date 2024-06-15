@@ -1,11 +1,14 @@
 <template>
-  <section>
-    <div>
-      <h2>Simply Unique/
-        Simply Better.</h2>
-      <h4>
-        3legant is a gift & decorations store based in HCMC, Vietnam. Est since 2019.
-      </h4>
+  <section class="container">
+    <div class="category-view">
+      <div class="category-view__text">
+        <h1 class="category-view__title">Simply Unique<span class="category-view__title-span">/</span>
+          Simply Better<span class="category-view__title-span">.</span></h1>
+        <h4 class="category-view__subtext">
+          <span class="category-view__subtext-span">3legant</span>  is a gift & decorations store based in HCMC, Vietnam. Est since 2019.
+        </h4>
+      </div>
+
       <div class="home-category__list" v-for="category in categories" :key="category.id">
         <div class="home-category__item">
             <h3>{{category.name}}</h3>
