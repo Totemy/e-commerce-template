@@ -12,7 +12,10 @@
           <CategoryView/>
         </div>
         <div>
-
+          <NewArrivalsView/>
+        </div>
+        <div>
+          <Opportunities/>
         </div>
       </div>
 
@@ -22,9 +25,11 @@
 <script>
 
 import CategoryView from '@/components/Home/CategoryView.vue'
+import NewArrivalsView from '@/components/Home/NewArrivalsView.vue'
+import Opportunities from '@/components/Home/OpportunitiesView.vue'
 
 export default {
-  components: { CategoryView },
+  components: { Opportunities, NewArrivalsView, CategoryView },
   data(){
     return{
 
