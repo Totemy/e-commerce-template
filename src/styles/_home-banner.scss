@@ -1,0 +1,30 @@
+.home-banner {
+
+  &__content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  &__text{
+    display: flex;
+    background-color: $n-2-color;
+    width: auto;
+    align-items: center;
+    padding: 140px 200px 192px 72px;
+    h2{
+      font-weight: 500;
+      font-size: 40px;
+      color: $n-7-color;
+    }
+    h3{
+      font-weight: 400;
+      font-size: 20px;
+      color: $n-7-color;
+    }
+    h4{
+      color: $s-1-blue-color;
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+}

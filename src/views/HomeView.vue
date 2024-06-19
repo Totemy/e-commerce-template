@@ -6,9 +6,6 @@
           Carousel with images
         </div>
         <div>
-
-        </div>
-        <div>
           <CategoryView/>
         </div>
         <div>
@@ -18,6 +15,11 @@
           <Opportunities/>
         </div>
       </div>
+    </div>
+    <div>
+      <BannerView/>
+    </div>
+    <div class="container">
 
     </div>
   </main>
@@ -27,9 +29,10 @@
 import CategoryView from '@/components/Home/CategoryView.vue'
 import NewArrivalsView from '@/components/Home/NewArrivalsView.vue'
 import Opportunities from '@/components/Home/OpportunitiesView.vue'
+import BannerView from '@/components/Home/BannerView.vue'
 
 export default {
-  components: { Opportunities, NewArrivalsView, CategoryView },
+  components: { BannerView, Opportunities, NewArrivalsView, CategoryView },
   data(){
     return{
 

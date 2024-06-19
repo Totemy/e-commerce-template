@@ -1,11 +1,14 @@
 .opportunities {
+  margin: 48px 0px;
   h3{
     font-weight: bold;
     font-size: 20px;
+    color: $n-7-color;
   }
   p{
     font-weight: 400;
     font-size: 14px;
+    color: $n-4-color;
   }
   &__blocks{
     display: flex;
