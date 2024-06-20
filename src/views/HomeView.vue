@@ -20,7 +20,7 @@
       <BannerView/>
     </div>
     <div class="container">
-
+      <BlogSectionView/>
     </div>
   </main>
 </template>
@@ -30,9 +30,10 @@ import CategoryView from '@/components/Home/CategoryView.vue'
 import NewArrivalsView from '@/components/Home/NewArrivalsView.vue'
 import Opportunities from '@/components/Home/OpportunitiesView.vue'
 import BannerView from '@/components/Home/BannerView.vue'
+import BlogSectionView from '@/components/Home/BlogSectionView.vue'
 
 export default {
-  components: { BannerView, Opportunities, NewArrivalsView, CategoryView },
+  components: { BlogSectionView, BannerView, Opportunities, NewArrivalsView, CategoryView },
   data(){
     return{
 

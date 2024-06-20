@@ -5,9 +5,9 @@
         <h2>
           New Arrivals
         </h2>
-        <div>
-          More Products ->
-        </div>
+        <button class="btn btn__primary-home">
+          More Products
+        </button>
       </div>
       <div class="new-arrivals__content">
         <div>

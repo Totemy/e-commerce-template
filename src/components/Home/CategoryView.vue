@@ -14,7 +14,7 @@
           <img class="category-view__img" :src="category.image" alt="{{category.name}}"/>
           <div class="category-view__overlay">
             <h3>{{category.name}}</h3>
-            <button class="category-view__btn">Shop now -></button>
+            <button class="btn btn__primary-home">Shop now</button>
           </div>
         </div>
       </div>
