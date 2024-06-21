@@ -1,5 +1,14 @@
 .home-banner {
+  background-color: $n-2-color;
+  &__img{
+    height: 100%;
+  }
+  &__left-content{
+    width: 100%;
+    display: flex;
+    justify-content: end;
 
+  }
   &__content{
     display: flex;
     flex-direction: row;
@@ -8,7 +17,7 @@
   &__text{
     display: flex;
     background-color: $n-2-color;
-    width: auto;
+    width: 100%;
     align-items: center;
     padding: 140px 200px 192px 72px;
     h2{

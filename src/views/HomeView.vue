@@ -3,7 +3,7 @@
     <div class="container">
       <div class="home">
         <div>
-          Carousel with images
+          <CarouselComponent/>
         </div>
         <div>
           <CategoryView/>
@@ -31,9 +31,10 @@ import NewArrivalsView from '@/components/Home/NewArrivalsView.vue'
 import Opportunities from '@/components/Home/OpportunitiesView.vue'
 import BannerView from '@/components/Home/BannerView.vue'
 import BlogSectionView from '@/components/Home/BlogSectionView.vue'
+import CarouselComponent from '@/components/Home/CarouselComponent.vue'
 
 export default {
-  components: { BlogSectionView, BannerView, Opportunities, NewArrivalsView, CategoryView },
+  components: { BlogSectionView, BannerView, Opportunities, NewArrivalsView, CategoryView, CarouselComponent },
   data(){
     return{
 

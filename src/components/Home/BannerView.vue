@@ -2,8 +2,8 @@
   <section>
     <div class="home-banner">
       <div class="home-banner__content">
-        <div class="home-banner__img">
-          <img src="../../../banner/banner.jpg" alt="">
+        <div class="home-banner__left-content">
+          <img class="home-banner__img" src="../../../banner/banner.jpg" alt="">
         </div>
         <div class="home-banner__text">
           <div>
