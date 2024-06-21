@@ -1,9 +1,14 @@
 body{
+  font-family: "Roboto", sans-serif;
   background-color: #ffffff;
   color: $n-7-color;
+  margin: 0;
 }
 .container{
   max-width: 1120px;
   padding: 0px 15px;
   margin: 0 auto;
+}
+.color-n4{
+  color: $n-4-color;
 }

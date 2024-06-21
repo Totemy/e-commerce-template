@@ -2,8 +2,8 @@
   <section class="container">
     <div class="category-view">
       <div class="category-view__text">
-        <h1 class="category-view__title">Simply Unique<span class="category-view__title-span">/</span>
-          Simply Better<span class="category-view__title-span">.</span></h1>
+        <h1 class="category-view__title">Simply Unique<span class="color-n4">/</span>
+          Simply Better<span class="color-n4">.</span></h1>
         <h4 class="category-view__subtext">
           <span class="category-view__subtext-span">3legant</span>  is a gift & decorations store based in HCMC, Vietnam. Est since 2019.
         </h4>

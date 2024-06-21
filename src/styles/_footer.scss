@@ -1,0 +1,15 @@
+.footer{
+  background-color: $n-7-color;
+  color: $n-1-color;
+  padding: 80px 0px;
+  &__content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &__left{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
