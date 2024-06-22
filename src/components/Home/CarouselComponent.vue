@@ -4,8 +4,12 @@
       <img v-for="(image, index) in images" :key="index" :src="'/gallery/' + image.url + '.jpg'" :class="{ active: index === currentIndex }">
     </div>
     <div class="slider__control">
-      <button @click="previousSlide">Left</button>
-      <button @click="nextSlide">Right</button>
+      <button class="slider__button " @click="previousSlide">
+        <img src="/gallery/Button.svg" alt="Next" />
+      </button>
+      <button class="slider__button slider__button__right " @click="nextSlide">
+        <img src="/gallery/Button.svg" alt="Next" />
+      </button>
     </div>
     <div class="slider-points">
       <span v-for="(image, index) in images" :key="index" @click="changeSlide(index)" :class="{ active: index === currentIndex }"></span>
