@@ -6,7 +6,7 @@
       </div>
       <div class="navbar__links">
         <router-link class="navbar__link" to="/" :class="{ 'navbar__link-active': activeRoute === '/' }" >Home</router-link>
-        <router-link class="navbar__link" to="/catalog" :class="{ 'navbar__link-active': activeRoute === '/catalog' }">Shop</router-link>
+        <router-link class="navbar__link" to="/shop" :class="{ 'navbar__link-active': activeRoute === '/shop' }">Shop</router-link>
         <router-link class="navbar__link" to="/catalog" :class="{ 'navbar__link-active': activeRoute === '/catalog' }" >Product</router-link>
         <router-link class="navbar__link" to="/catalog" :class="{ 'navbar__link-active': activeRoute === '/catalog' }">Contact Us</router-link>
         <router-link class="navbar__link" to="/admin" :class="{ 'navbar__link-active': activeRoute === '/admin' }" >Admin</router-link>

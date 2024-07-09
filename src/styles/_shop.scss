@@ -1,0 +1,13 @@
+.shop-banner{
+  h1{
+    font-size: 54px;
+    color: $n-7-color;
+  }
+  h3{
+    font-size: 20px;
+    color: #121212;
+  }
+  &__wrapper{
+    background-image: url("/public/shop/banner.jpg");
+  }
+}
