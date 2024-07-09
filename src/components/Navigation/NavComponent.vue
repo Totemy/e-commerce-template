@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      activeRoute: '', // Initialize active route
+      activeRoute: '',
       openBar: false
     };
   },

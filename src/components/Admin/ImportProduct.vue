@@ -1,23 +1,27 @@
 <template>
   <div>
-    <h1>Додати продукт</h1>
+    <h1>Add Product</h1>
     <form @submit.prevent="addProduct">
       <div class="form-group">
-        <label for="productName">Назва продукту:</label>
+        <label for="productName">name product:</label>
         <input type="text" id="productName" v-model="productName" class="form-control">
       </div>
       <div class="form-group">
-        <label for="category">Категорія:</label>
+        <label for="category">Category : :</label>
         <select id="category" v-model="categoryId" class="form-control">
           <option v-for="category in categories" :value="category.id" :key="category.id">{{ category.name }}</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="sizes">Розміри:</label>
+        <label for="sizes">Size :</label>
         <input type="number" id="sizes" v-model="sizes" class="form-control">
       </div>
       <div class="form-group">
-        <label for="price">Ціна:</label>
+        <label for="image">Image link</label>
+        <input type="text" id="image" v-model="image" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="price">Price :</label>
         <input type="number" id="price" v-model="price" class="form-control">
       </div>
       <button type="submit" class="btn btn-primary">Додати</button>
@@ -32,6 +36,7 @@ import { addDoc, collection, getDocs } from 'firebase/firestore';
 
 const productName = ref('');
 const categoryId = ref('');
+const image = ref('');
 const sizes = ref('');
 const price = ref(0);
 
@@ -43,6 +48,7 @@ const addProduct = async () => {
       categoryId: categoryId.value,
       sizes: sizes.value,
       price: price.value,
+      image: image.value,
     });
 
     console.log('Product added with ID: ', docRef.id);
@@ -50,12 +56,13 @@ const addProduct = async () => {
     categoryId.value = '';
     sizes.value = '';
     price.value = 0;
+    image.value = '';
   } catch (error) {
     console.error('Error adding product: ', error);
   }
 };
 
-// Дістаємо список категорій з Firebase
+// get category from Firebase
 const categories = ref([]);
 const fetchCategories = async () => {
   try {
@@ -66,6 +73,5 @@ const fetchCategories = async () => {
   }
 };
 
-// Викликаємо функцію для отримання списку категорій
 fetchCategories();
 </script>

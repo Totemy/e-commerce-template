@@ -14,6 +14,7 @@
         <p>Категорія: {{ getCategoryName(product.categoryId) }}</p>
         <p>Розміри: {{ product.sizes }}</p>
         <p>Ціна: {{ product.price }}</p>
+        <img :src="product.image"  :alt="product.name" />
       </li>
     </ul>
   </div>
