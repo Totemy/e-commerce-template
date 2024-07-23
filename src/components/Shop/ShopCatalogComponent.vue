@@ -1,10 +1,6 @@
 <template>
   <section>
     <div>
-      <h2>Категорії</h2>
-
-
-
       <h2>Продукти</h2>
       <ul>
         <li v-for="product in products" :key="product.id">
