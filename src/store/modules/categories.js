@@ -1,28 +1,21 @@
-import { collection, onSnapshot } from 'firebase/firestore';
+import {defineStore} from 'pinia';
+import {collection, onSnapshot} from 'firebase/firestore';
 import { database } from '@/firebase.js';
 
-export default {
-  namespaced: true,
-  state: () => ({
+export const useCategoriesStore = defineStore('categories', {
+  state:() => ({
     categories: [],
   }),
-  mutations: {
-    setCategories(state, categories) {
-      state.categories = categories;
-    },
-  },
-  actions: {
-    fetchCategories({ commit }) {
+  actions:{
+    fetchCategories(){
       const categoriesCollection = collection(database, 'categories');
-      onSnapshot(categoriesCollection, (querySnapshot) => {
-        const categories = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        commit('setCategories', categories);
+      onSnapshot(categoriesCollection, (querySnapshot) =>{
+        const categories = querySnapshot.docs.map((doc => ({id: doc.id, ...doc.data() })));
+        this.$patch({categories});
       });
-    },
+    }
   },
-  getters: {
-    categories(state) {
-      return state.categories;
-    },
-  },
-};
+  getters:{
+    allCategories: (state) => state.categories,
+  }
+})

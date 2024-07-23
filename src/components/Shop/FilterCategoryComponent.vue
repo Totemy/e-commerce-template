@@ -1,5 +1,6 @@
 <template>
   <aside>
+    some text
     <ul>
       <li v-for="category in categories" :key="category.id">
         {{ category.name }}
@@ -8,13 +9,15 @@
   </aside>
 </template>
 <script setup>
-import { useStore } from 'vuex'
+import {useCategoriesStore} from '@/store/modules/categories.js'
 import { computed, onMounted } from 'vue'
 
-const store = useStore()
-const categories = computed(()=> store.getters['categories/categories'])
+const store = useCategoriesStore();
+
 
 onMounted(()=>{
-  store.dispatch('categories/fetchCategories');
+  store.fetchCategories();
 })
+const categories = computed(()=> store.allCategories)
+
 </script>
