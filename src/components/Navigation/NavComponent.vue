@@ -1,8 +1,13 @@
 <template>
   <section class="container">
     <nav class="navbar">
-      <div class="navbar__logo">
-        3legant<span class="color-n4">.</span>
+      <div class="navbar__left">
+        <button class="btn btn__icon navbar__burger" @click="openBar = true">
+          <img src="/icons/menu.svg" alt="menu" />
+        </button>
+        <router-link class="navbar__logo" to="/">
+          3legant<span class="color-n4">.</span>
+        </router-link>
       </div>
       <div class="navbar__links">
         <router-link class="navbar__link" to="/" :class="{ 'navbar__link-active': activeRoute === '/' }" >Home</router-link>
@@ -12,20 +17,30 @@
         <router-link class="navbar__link" to="/admin" :class="{ 'navbar__link-active': activeRoute === '/admin' }" >Admin</router-link>
       </div>
      <div class="navbar__buttons">
-          <button class="btn btn__nav"> <img src="/icons/search.svg" alt="search" /> </button>
-          <button class="btn btn__nav"><img src="/icons/account.svg" alt="account" /> </button>
-          <button class="btn btn__nav"> <img src="/icons/bag.svg" alt="shop-bag" /> </button>
+          <button class="btn btn__nav only-desktop"> <img src="/icons/search.svg" alt="search" /> </button>
+          <button class="btn btn__nav only-desktop"><img src="/icons/account.svg" alt="account" /> </button>
+          <button class="btn btn__nav navbar__bag">
+            <img src="/icons/bag.svg" alt="shop-bag" />
+            <span class="navbar__count">2</span>
+          </button>
      </div>
     </nav>
+    <FlyMenuComponent v-if="openBar" @close="openBar = false" />
   </section>
 </template>
 <script>
+import FlyMenuComponent from '@/components/Navigation/FlyMenuComponent.vue'
+
 export default {
+  components: { FlyMenuComponent },
   data() {
     return {
       activeRoute: '',
       openBar: false
     };
+  },
+  created() {
+    this.activeRoute = this.$route.path;
   },
   watch: {
     '$route'(to) {
