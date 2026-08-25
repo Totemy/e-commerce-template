@@ -201,9 +201,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 12px 0px;
+    font-family: inherit;
     @include caption-1;
     color: $n-7-color;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: opacity $transition;
+    &:hover{
+      opacity: 0.6;
+    }
   }
   &__row-icons{
     display: flex;

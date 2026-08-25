@@ -9,7 +9,7 @@
         <img src="/icons/heart.svg" alt="" />
       </button>
       <img class="product-card__img" :src="image" :alt="product.name" />
-      <button class="btn btn__primary product-card__cart">Add to cart</button>
+      <button class="btn btn__primary product-card__cart" @click="addToCart">Add to cart</button>
     </div>
     <div class="product-card__body">
       <div class="product-card__rating">
@@ -31,6 +31,7 @@
 </template>
 <script setup>
 import { computed } from 'vue'
+import { useCartStore } from '@/store/modules/cart.js'
 
 const props = defineProps({
   product: {
@@ -49,6 +50,13 @@ const image = computed(() => {
   if (Array.isArray(props.product.images)) return props.product.images[0];
   return '';
 });
+const cart = useCartStore();
+
+const addToCart = () => {
+  cart.add(props.product);
+  cart.open();
+};
+
 const price = computed(() => Number(props.product.price ?? 0).toFixed(2));
 const oldPrice = computed(() => props.product.oldPrice ? Number(props.product.oldPrice).toFixed(2) : null);
 const rating = computed(() => Number(props.product.rating ?? 5));

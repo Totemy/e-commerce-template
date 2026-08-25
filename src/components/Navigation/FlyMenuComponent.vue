@@ -26,13 +26,13 @@
         <router-link class="fly-menu__link" to="/admin" @click="$emit('close')">Admin</router-link>
       </nav>
       <div class="fly-menu__spacer"></div>
-      <div class="fly-menu__row">
+      <button class="fly-menu__row" type="button" @click="openCart">
         Cart
         <span class="fly-menu__row-icons">
           <img src="/icons/bag.svg" alt="cart" />
-          <span class="navbar__count">2</span>
+          <span class="navbar__count" v-if="cart.count">{{ cart.count }}</span>
         </span>
-      </div>
+      </button>
       <div class="fly-menu__row">
         Wishlist
         <span class="fly-menu__row-icons">
@@ -52,5 +52,13 @@
   </div>
 </template>
 <script setup>
-defineEmits(['close']);
+import { useCartStore } from '@/store/modules/cart.js'
+
+const emit = defineEmits(['close']);
+const cart = useCartStore();
+
+const openCart = () => {
+  emit('close');
+  cart.open();
+};
 </script>
