@@ -1,0 +1,25 @@
+// Text styles з Figma → 🎨 Style Guide. Назви збережені один-в-один.
+$font-family: "Roboto", sans-serif;
+
+@mixin hero        { font-size: 96px; line-height: 96px; }
+@mixin headline-1  { font-size: 80px; line-height: 84px; }
+@mixin headline-2  { font-size: 72px; line-height: 76px; }
+@mixin headline-3  { font-size: 54px; line-height: 58px; }
+@mixin headline-4  { font-size: 40px; line-height: 44px; }
+@mixin headline-5  { font-size: 34px; line-height: 38px; }
+@mixin headline-6  { font-size: 28px; line-height: 34px; }
+@mixin headline-7  { font-size: 20px; line-height: 28px; }
+
+@mixin body-1      { font-size: 20px; line-height: 32px; }
+@mixin body-2      { font-size: 16px; line-height: 26px; }
+@mixin caption-1   { font-size: 14px; line-height: 22px; }
+@mixin caption-2   { font-size: 12px; line-height: 20px; }
+
+@mixin hairline-1  { font-size: 16px; line-height: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
+@mixin hairline-2  { font-size: 12px; line-height: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+@mixin button-xl   { font-size: 26px; line-height: 38px; }
+@mixin button-l    { font-size: 22px; line-height: 34px; }
+@mixin button-m    { font-size: 18px; line-height: 32px; }
+@mixin button-s    { font-size: 16px; line-height: 28px; }
+@mixin button-xs   { font-size: 14px; line-height: 24px; }
