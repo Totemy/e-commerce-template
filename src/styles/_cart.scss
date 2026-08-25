@@ -193,66 +193,114 @@
   }
 }
 
-.cart-page{
-  padding: $gap-l 0px $section-y;
-  @media (max-width: $mobile){
-    padding: $gap-m 0px $section-y-mobile;
-  }
+
+// Сторінка Cart: таблиця Product / Quantity / Price / Subtotal.
+.cart-table{
   &__head{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $gap-xs;
-    margin-bottom: $gap-l;
-    text-align: center;
-    h1{
-      font-weight: 500;
-      @include headline-3;
-      color: $n-7-color;
-      @media (max-width: $mobile){
-        @include headline-5;
-      }
-    }
-  }
-  &__body{
     display: grid;
-    grid-template-columns: 1fr $shop-drawer-summary;
-    align-items: start;
-    gap: $gap-l;
-    @media (max-width: $tablet){
-      grid-template-columns: 1fr;
-      gap: $gap-m;
-    }
-  }
-  &__items{
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid $n-3-color;
-  }
-  &__summary{
-    display: flex;
-    flex-direction: column;
-    gap: $gap-xs;
-    padding: $gap-m;
-    border: 1px solid $n-3-color;
-    border-radius: $radius-s;
-    h2{
-      margin-bottom: $gap-xs;
-      font-weight: 600;
-      @include headline-7;
-      color: $n-7-color;
-    }
-  }
-  &__continue{
-    margin: $gap-xs auto 0;
-  }
-  &__empty{
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr 120px 100px 100px;
     align-items: center;
     gap: $gap-s;
-    padding: $section-y-mobile 0px;
-    @include body-2;
-    color: $n-4-color;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $n-3-color;
+    span{
+      font-weight: 600;
+      @include caption-1;
+      color: $n-7-color;
+    }
+    span:not(:first-child){
+      text-align: center;
+    }
+    span:last-child{
+      text-align: right;
+    }
+    @media (max-width: $mobile){
+      display: none;
+    }
   }
+  &__row{
+    display: grid;
+    grid-template-columns: 1fr 120px 100px 100px;
+    align-items: center;
+    gap: $gap-s;
+    padding: $gap-s 0px;
+    border-bottom: 1px solid $n-3-color;
+    @media (max-width: $mobile){
+      grid-template-columns: 1fr auto;
+      gap: $gap-xs $gap-s;
+    }
+  }
+  &__product{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $gap-s;
+    min-width: 0;
+    @media (max-width: $mobile){
+      grid-column: 1 / -1;
+    }
+  }
+  &__info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $gap-xxs;
+    min-width: 0;
+  }
+  &__remove{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xxs;
+    margin-top: $gap-xxs;
+    padding: 0;
+    font-family: inherit;
+    @include caption-1;
+    color: $n-4-color;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color $transition;
+    &:hover{
+      color: $n-7-color;
+    }
+    img{
+      width: $gap-s;
+      height: $gap-s;
+      opacity: 0.6;
+    }
+  }
+  &__price,
+  &__subtotal{
+    @include caption-1;
+    color: $n-7-color;
+    text-align: center;
+  }
+  &__subtotal{
+    font-weight: 600;
+    text-align: right;
+  }
+  // На мобільному степер ліворуч, сума праворуч, ціна за штуку ховається.
+  &__row .cart-line__stepper{
+    justify-self: center;
+    margin-top: 0;
+    @media (max-width: $mobile){
+      justify-self: start;
+    }
+  }
+  &__price{
+    @media (max-width: $mobile){
+      display: none;
+    }
+  }
+}
+
+.cart-page__empty{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-s;
+  padding: $section-y-mobile 0px;
+  @include body-2;
+  color: $n-4-color;
 }

@@ -29,7 +29,7 @@
           <span>${{ subtotal }}</span>
         </div>
         <div class="cart-flyout__checkout">
-          <button class="btn btn__primary">Checkout</button>
+          <router-link class="btn btn__primary cart-flyout__checkout-link" to="/checkout" @click="cart.close()">Checkout</router-link>
         </div>
         <router-link class="cart-flyout__view" to="/cart" @click="cart.close()">View Cart</router-link>
       </div>
