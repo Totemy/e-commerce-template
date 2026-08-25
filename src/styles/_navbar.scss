@@ -1,3 +1,15 @@
+// На мобільному хедер закріплений, щоб бургер і кошик були доступні
+// з будь-якої точки сторінки.
+.header{
+  @media (max-width: $mobile){
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #ffffff;
+    border-bottom: 1px solid $n-3-color;
+  }
+}
+
 .navbar{
   display: grid;
   grid-template-columns: 1fr auto 1fr;

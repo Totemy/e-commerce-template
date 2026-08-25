@@ -1,5 +1,6 @@
 <template>
-  <section class="container">
+  <header class="header">
+    <div class="container">
     <nav class="navbar">
       <div class="navbar__left">
         <button class="btn btn__icon navbar__burger" @click="openBar = true">
@@ -25,9 +26,10 @@
           </button>
      </div>
     </nav>
+    </div>
     <FlyMenuComponent v-if="openBar" @close="openBar = false" />
     <CartFlyoutComponent v-if="cart.isOpen" />
-  </section>
+  </header>
 </template>
 <script>
 import FlyMenuComponent from '@/components/Navigation/FlyMenuComponent.vue'
