@@ -1,7 +1,7 @@
 /* eslint-disable */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics, isSupported as isAnalyticsSupported } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 
@@ -16,12 +16,33 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
-// Initialize Cloud Firestore and get a reference to the service
-const database = getFirestore(firebaseApp);
+// Without a .env the config values are undefined and the SDK throws on init,
+// which would stop the whole app from mounting. Boot without Firebase instead.
+const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId
+);
 
+let firebaseApp = null;
+let analytics = null;
+let database = null;
 
-export { firebaseApp, analytics, database };
+if (isFirebaseConfigured) {
+  firebaseApp = initializeApp(firebaseConfig);
+  // Initialize Cloud Firestore and get a reference to the service
+  database = getFirestore(firebaseApp);
+  // Analytics needs measurementId and a supported browser environment
+  if (firebaseConfig.measurementId) {
+    isAnalyticsSupported()
+      .then((supported) => {
+        if (supported) analytics = getAnalytics(firebaseApp);
+      })
+      .catch(() => {});
+  }
+} else {
+  console.warn(
+    '[firebase] Missing VITE_FIREBASE_* variables. Copy .env.example to .env and fill them in. ' +
+    'The app runs, but Firestore-backed content stays empty.'
+  );
+}
 
+export { firebaseApp, analytics, database, isFirebaseConfigured };

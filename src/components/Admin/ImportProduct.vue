@@ -41,6 +41,10 @@ const sizes = ref('');
 const price = ref(0);
 
 const addProduct = async () => {
+  if (!database) {
+    console.error('Firebase is not configured (see .env.example)');
+    return;
+  }
   try {
     const productsRef = collection(database, 'products');
     const docRef = await addDoc(productsRef, {
@@ -65,6 +69,7 @@ const addProduct = async () => {
 // get category from Firebase
 const categories = ref([]);
 const fetchCategories = async () => {
+  if (!database) return;
   try {
     const querySnapshot = await getDocs(collection(database, 'categories'));
     categories.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));

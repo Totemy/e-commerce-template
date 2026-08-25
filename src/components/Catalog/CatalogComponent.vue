@@ -32,6 +32,7 @@ let unsubscribeCategories = null;
 let unsubscribeProducts = null;
 
 const getCategories = () => {
+  if (!database) return;
   const categoriesCollection = collection(database, 'categories');
   unsubscribeCategories = onSnapshot(categoriesCollection, (querySnapshot) => {
     categories.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -39,6 +40,7 @@ const getCategories = () => {
 };
 
 const getProducts = () => {
+  if (!database) return;
   const productsCollection = collection(database, 'products');
   unsubscribeProducts = onSnapshot(productsCollection, (querySnapshot) => {
     products.value = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
