@@ -1,0 +1,59 @@
+.new-arrivals{
+  &__header{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $gap-m;
+    margin-bottom: $gap-m;
+  }
+  &__title{
+    font-weight: 500;
+    @include headline-4;
+    @media (max-width: $mobile){
+      @include headline-6;
+    }
+  }
+  &__track{
+    display: flex;
+    flex-direction: row;
+    gap: $gap-m;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+    @media (max-width: $mobile){
+      gap: $gap-s;
+    }
+  }
+  &__item{
+    // Чотири картки на десктопі, ~1.75 на мобільному — без фіксованої ширини.
+    flex: 0 0 calc((100% - 3 * #{$gap-m}) / 4);
+    scroll-snap-align: start;
+    @media (max-width: $tablet){
+      flex-basis: calc((100% - 2 * #{$gap-m}) / 3);
+    }
+    @media (max-width: $mobile){
+      flex-basis: $arrivals-card-mobile;
+    }
+  }
+  &__progress{
+    height: 2px;
+    margin-top: $gap-m;
+    background-color: $n-3-color;
+  }
+  &__progress-thumb{
+    height: 100%;
+    background-color: $n-7-color;
+    transition: width $transition, margin-left $transition;
+  }
+  &__footer{
+    display: none;
+    margin-top: $gap-m;
+    @media (max-width: $mobile){
+      display: block;
+    }
+  }
+}

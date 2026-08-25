@@ -1,26 +1,60 @@
 .opportunities {
-  margin: 48px 0px;
-  h3{
-    font-weight: bold;
-    font-size: 20px;
-    color: $n-7-color;
-  }
-  p{
-    font-weight: 400;
-    font-size: 14px;
-    color: $n-4-color;
-  }
   &__blocks{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $gap-m;
+    @media (max-width: $tablet){
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $mobile){
+      grid-template-columns: repeat(2, 1fr);
+      gap: $gap-xs;
+    }
   }
   &__block{
-    padding: 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-s;
+    min-height: $opportunity-h;
+    box-sizing: border-box;
+    justify-content: center;
+    padding: $gap-xl $gap-l;
     background-color: $n-2-color;
+    transition: background-color $transition, transform $transition;
+    &:hover{
+      background-color: $n-3-color;
+      transform: translateY(-$gap-xxs);
+    }
+    @media (max-width: $mobile){
+      gap: 12px;
+      min-height: $opportunity-h-mobile;
+      padding: $gap-ml $gap-s;
+    }
+    img{
+      width: $gap-m;
+      height: $gap-m;
+    }
   }
   &__text{
-
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xxs;
+    h3{
+      font-weight: 600;
+      @include headline-7;
+      color: $n-7-color;
+      @media (max-width: $mobile){
+        @include caption-1;
+        font-weight: 600;
+      }
+    }
+    p{
+      font-weight: 400;
+      @include caption-1;
+      color: $n-4-color;
+      @media (max-width: $mobile){
+        @include caption-2;
+      }
+    }
   }
 }

@@ -1,27 +1,18 @@
 <template>
-  <main >
+  <main>
     <div class="container">
-      <div class="home">
-        <div>
-          <CarouselComponent/>
-        </div>
-        <div>
-          <CategoryView/>
-        </div>
-        <div>
-          <NewArrivalsView/>
-        </div>
-        <div>
-          <Opportunities/>
-        </div>
-      </div>
+      <CarouselComponent/>
     </div>
-    <div>
-      <BannerView/>
-    </div>
+    <CategoryView v-reveal/>
     <div class="container">
-      <BlogSectionView/>
+      <NewArrivalsView v-reveal/>
+      <Opportunities v-reveal/>
     </div>
+    <BannerView v-reveal/>
+    <div class="container">
+      <BlogSectionView v-reveal/>
+    </div>
+    <NewsletterView v-reveal/>
   </main>
 </template>
 <script>
@@ -32,9 +23,10 @@ import Opportunities from '@/components/Home/OpportunitiesView.vue'
 import BannerView from '@/components/Home/BannerView.vue'
 import BlogSectionView from '@/components/Home/BlogSectionView.vue'
 import CarouselComponent from '@/components/Home/CarouselComponent.vue'
+import NewsletterView from '@/components/Home/NewsletterView.vue'
 
 export default {
-  components: { BlogSectionView, BannerView, Opportunities, NewArrivalsView, CategoryView, CarouselComponent },
+  components: { NewsletterView, BlogSectionView, BannerView, Opportunities, NewArrivalsView, CategoryView, CarouselComponent },
   data(){
     return{
 

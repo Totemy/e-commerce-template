@@ -1,41 +1,90 @@
 .btn{
   cursor: pointer;
+  font-family: inherit;
+  transition: color $transition, background-color $transition, border-color $transition, opacity $transition;
   &__primary{
-
+    display: block;
+    width: 100%;
+    padding: 10px $gap-s;
+    font-weight: 500;
+    @include button-s;
+    color: $n-1-color;
+    background-color: $n-7-color;
+    border: none;
+    border-radius: $radius-s;
+    &:hover{
+      background-color: $n-5-color;
+    }
   }
+  &__outline{
+    padding: 10px $gap-l;
+    font-weight: 500;
+    @include button-s;
+    color: $n-7-color;
+    background-color: transparent;
+    border: 1px solid $n-7-color;
+    border-radius: $radius-pill;
+    &:hover{
+      color: $n-1-color;
+      background-color: $n-7-color;
+    }
+  }
+  // Текстова кнопка з підкресленням і стрілкою (з макета).
   &__primary-home{
     position: relative;
-    font-size: 16px;
-    line-height: 175%;
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-xs;
+    padding: 0px 0px 2px;
+    font-weight: 500;
+    @include button-xs;
+    color: $n-7-color;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid $n-7-color;
-    padding-right: 20px;
-    padding-left: 1px;
-    overflow: hidden;
-    &:before{
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: black;
-      transition: width 0.3s ease-in-out;
-    }
+    text-decoration: none;
     &:after{
       content: url("/button/arrow-right.svg");
-      position: absolute;
-      bottom: -3px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      transition: transform $transition;
     }
-    &:hover{
-      &:before{
-        width: 0;
-      }
-
+    &:before{
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $n-7-color;
+      transform-origin: left;
+      transition: transform $transition;
+    }
+    &:hover:after{
+      transform: translateX($gap-xxs);
+    }
+    &:hover:before{
+      transform: scaleX(0);
     }
   }
   &__nav{
+    display: flex;
+    padding: 0;
     background-color: transparent;
     border: none;
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+  &__icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    &:hover{
+      opacity: 0.6;
+    }
   }
 }
