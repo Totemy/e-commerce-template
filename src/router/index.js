@@ -4,6 +4,8 @@ import AdminView from '@/views/AdminView.vue'
 import CatalogComponent from '@/components/Catalog/CatalogComponent.vue'
 import ShopView from '@/views/ShopView.vue'
 import CartView from '@/views/CartView.vue'
+import CheckoutView from '@/views/CheckoutView.vue'
+import OrderCompleteView from '@/views/OrderCompleteView.vue'
 
 
 const router = createRouter({
@@ -28,6 +30,16 @@ const router = createRouter({
       path: '/cart',
       name: 'cart',
       component: CartView
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: CheckoutView
+    },
+    {
+      path: '/order-complete',
+      name: 'order-complete',
+      component: OrderCompleteView
     },
     {
       path: '/catalog',

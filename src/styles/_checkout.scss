@@ -1,0 +1,474 @@
+// Спільна обгортка для Cart / Check Out / Order Complete.
+.checkout{
+  padding: $gap-l 0px $section-y;
+  @media (max-width: $mobile){
+    padding: $gap-m 0px $section-y-mobile;
+  }
+  &__head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-m;
+    margin-bottom: $gap-xl;
+    text-align: center;
+    h1{
+      font-weight: 500;
+      @include headline-3;
+      color: $n-7-color;
+      @media (max-width: $mobile){
+        @include headline-5;
+      }
+    }
+  }
+  &__body{
+    display: grid;
+    grid-template-columns: 1fr $checkout-summary;
+    align-items: start;
+    gap: 67px;
+    @media (max-width: $tablet){
+      grid-template-columns: 1fr;
+      gap: $gap-m;
+    }
+  }
+  &__form{
+    display: flex;
+    flex-direction: column;
+    gap: $gap-m;
+  }
+  &__actions{
+    margin-top: $gap-xs;
+  }
+}
+
+// Індикатор кроків: гальочка на пройдених, смуга під пройденим і активним.
+.steps{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: $steps-max;
+  gap: $gap-m;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  @media (max-width: $mobile){
+    gap: $gap-xs;
+  }
+  &__item{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  &__row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    @media (max-width: $mobile){
+      gap: $gap-xs;
+    }
+  }
+  &__num{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 $step-circle;
+    width: $step-circle;
+    height: $step-circle;
+    font-weight: 600;
+    @include caption-1;
+    color: $n-4-color;
+    background-color: $n-3-color;
+    border-radius: 50%;
+    transition: color $transition, background-color $transition;
+    img{
+      width: $gap-s;
+      height: $gap-s;
+    }
+  }
+  &__label{
+    font-weight: 600;
+    @include caption-1;
+    color: $n-4-color;
+    transition: color $transition;
+    @media (max-width: $mobile){
+      display: none;
+    }
+  }
+  &__bar{
+    display: block;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color $transition;
+  }
+  // Активний крок — темний, пройдений — зелений.
+  &__item-active{
+    .steps__num{
+      color: $n-1-color;
+      background-color: $n-7-color;
+    }
+    .steps__label{
+      color: $n-7-color;
+      @media (max-width: $mobile){
+        display: block;
+      }
+    }
+    .steps__bar{
+      background-color: $n-7-color;
+    }
+  }
+  &__item-done{
+    .steps__num{
+      background-color: $s-1-green-color;
+    }
+    .steps__label{
+      color: $s-1-green-color;
+    }
+    .steps__bar{
+      background-color: $s-1-green-color;
+    }
+  }
+}
+
+// Картка-секція форми (Contact Information, Shipping Address, Payment method).
+.form-card{
+  padding: $gap-m;
+  border: 1px solid $n-3-color;
+  border-radius: $radius-s;
+  @media (max-width: $mobile){
+    padding: $gap-s;
+  }
+  &__title{
+    margin-bottom: $gap-s;
+    font-weight: 500;
+    @include headline-7;
+    color: $n-7-color;
+  }
+  &__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $gap-s;
+    @media (max-width: $mobile){
+      grid-template-columns: 1fr;
+    }
+  }
+  &__divider{
+    height: 1px;
+    margin: $gap-s 0px;
+    background-color: $n-3-color;
+  }
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xxs;
+  &-wide{
+    grid-column: 1 / -1;
+  }
+  &__label{
+    @include hairline-2;
+    font-weight: 600;
+    color: $n-4-color;
+  }
+  &__req{
+    color: $n-4-color;
+  }
+  input,
+  select{
+    width: 100%;
+    padding: 12px $gap-s;
+    box-sizing: border-box;
+    font-family: inherit;
+    @include caption-1;
+    color: $n-7-color;
+    background-color: transparent;
+    border: 1px solid $n-3-color;
+    border-radius: $radius-s;
+    outline: none;
+    transition: border-color $transition;
+    &:focus{
+      border-color: $n-7-color;
+    }
+    &::placeholder{
+      color: $n-4-color;
+    }
+  }
+  select{
+    appearance: none;
+    background-image: url("/icons/chevron-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: $gap-s;
+    cursor: pointer;
+  }
+}
+
+// Радіо-рядок у рамці (спосіб доставки, спосіб оплати).
+.option-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 12px $gap-s;
+  border: 1px solid $n-3-color;
+  border-radius: $radius-s;
+  cursor: pointer;
+  transition: border-color $transition, background-color $transition;
+  &:hover{
+    border-color: $n-4-color;
+  }
+  &-checked{
+    border-color: $n-7-color;
+    background-color: $n-2-color;
+  }
+  input{
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: $n-7-color;
+    cursor: pointer;
+  }
+  &__label{
+    flex: 1;
+    @include caption-1;
+    color: $n-7-color;
+  }
+  &__note{
+    @include caption-1;
+    color: $n-7-color;
+  }
+  img{
+    width: $gap-m;
+    height: $gap-m;
+  }
+}
+
+.checkbox-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-top: $gap-s;
+  @include caption-1;
+  color: $n-4-color;
+  cursor: pointer;
+  input{
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: $n-7-color;
+    cursor: pointer;
+  }
+}
+
+// Права колонка: Cart summary / Order summary.
+.summary{
+  display: flex;
+  flex-direction: column;
+  padding: $gap-m;
+  box-sizing: border-box;
+  border: 1px solid $n-3-color;
+  border-radius: $radius-s;
+  @media (max-width: $mobile){
+    padding: $gap-s;
+  }
+  &__title{
+    margin-bottom: $gap-s;
+    font-weight: 500;
+    @include headline-7;
+    color: $n-7-color;
+  }
+  &__options{
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+    margin-bottom: $gap-s;
+  }
+  &__lines{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $gap-s;
+  }
+  &__row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap-s;
+    padding: 12px 0px;
+    border-top: 1px solid $n-3-color;
+    &-total{
+      dt, dd, span{
+        font-weight: 600;
+        @include body-2;
+        color: $n-7-color;
+      }
+    }
+    span:first-child{
+      @include caption-1;
+      color: $n-5-color;
+    }
+    span:last-child{
+      font-weight: 600;
+      @include caption-1;
+      color: $n-7-color;
+    }
+  }
+  &__discount span:last-child{
+    color: $s-1-green-color;
+  }
+  &__cta{
+    margin-top: $gap-s;
+  }
+}
+
+// Купон: інпут з іконкою і кнопкою Apply.
+.coupon{
+  &__title{
+    font-weight: 500;
+    @include headline-7;
+    color: $n-7-color;
+  }
+  &__hint{
+    margin-top: $gap-xxs;
+    @include caption-1;
+    color: $n-4-color;
+  }
+  &__field{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xs;
+    max-width: 424px;
+    margin-top: $gap-s;
+    padding: 4px 4px 4px $gap-s;
+    border: 1px solid $n-3-color;
+    border-radius: $radius-s;
+    transition: border-color $transition;
+    &:focus-within{
+      border-color: $n-7-color;
+    }
+    img{
+      width: $gap-m;
+      height: $gap-m;
+    }
+    input{
+      flex: 1;
+      min-width: 0;
+      padding: $gap-xs 0px;
+      font-family: inherit;
+      @include caption-1;
+      color: $n-7-color;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      &::placeholder{
+        color: $n-4-color;
+      }
+    }
+  }
+  &__apply{
+    padding: $gap-xs $gap-s;
+    font-family: inherit;
+    font-weight: 500;
+    @include caption-1;
+    color: $n-7-color;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity $transition;
+    &:hover{
+      opacity: 0.6;
+    }
+    &-solid{
+      color: $n-1-color;
+      background-color: $n-7-color;
+      border-radius: $radius-s;
+    }
+  }
+}
+
+// Order Complete.
+.order-complete{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-m;
+  width: 100%;
+  max-width: $order-card;
+  margin: 0 auto;
+  padding: $gap-xl $gap-l;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: $n-2-color;
+  @media (max-width: $mobile){
+    padding: $gap-m $gap-s;
+  }
+  &__thanks{
+    font-weight: 500;
+    @include headline-6;
+    color: $n-4-color;
+  }
+  &__title{
+    font-weight: 500;
+    @include headline-4;
+    color: $n-7-color;
+    @media (max-width: $mobile){
+      @include headline-6;
+    }
+  }
+  &__thumbs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $gap-s;
+  }
+  &__thumb{
+    position: relative;
+    width: $cart-thumb;
+    aspect-ratio: 1 / 1;
+    background-color: #ffffff;
+    img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+  }
+  &__qty{
+    position: absolute;
+    top: -$gap-xs;
+    right: -$gap-xs;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $gap-m;
+    height: $gap-m;
+    padding: 0px 6px;
+    box-sizing: border-box;
+    font-weight: 600;
+    @include caption-2;
+    color: $n-1-color;
+    background-color: $n-7-color;
+    border-radius: 50%;
+  }
+  &__details{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: $gap-xs $gap-m;
+    margin: 0;
+    text-align: left;
+    dt{
+      @include caption-1;
+      color: $n-4-color;
+    }
+    dd{
+      margin: 0;
+      font-weight: 600;
+      @include caption-1;
+      color: $n-7-color;
+    }
+  }
+}

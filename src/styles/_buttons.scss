@@ -4,6 +4,9 @@
   transition: color $transition, background-color $transition, border-color $transition, opacity $transition;
   &__primary{
     display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
     width: 100%;
     padding: 10px $gap-s;
     font-weight: 500;
@@ -17,7 +20,9 @@
     }
   }
   &__outline{
+    display: inline-block;
     padding: 10px $gap-l;
+    text-decoration: none;
     font-weight: 500;
     @include button-s;
     color: $n-7-color;
@@ -30,6 +35,22 @@
     }
   }
   // Текстова кнопка з підкресленням і стрілкою (з макета).
+  // Темна кнопка-пігулка (Purchase history у макеті Order Complete).
+  &__primary-pill{
+    display: inline-block;
+    padding: 10px $gap-l;
+    font-weight: 500;
+    @include button-s;
+    color: $n-1-color;
+    background-color: $n-7-color;
+    border: 1px solid $n-7-color;
+    border-radius: $radius-pill;
+    text-decoration: none;
+    &:hover{
+      background-color: $n-5-color;
+      border-color: $n-5-color;
+    }
+  }
   &__primary-home{
     position: relative;
     display: inline-flex;
