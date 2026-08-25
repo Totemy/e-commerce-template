@@ -1,0 +1,258 @@
+.cart-flyout{
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: flex-end;
+  &__overlay{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(20, 23, 24, 0.4);
+    animation: fade-in $transition both;
+  }
+  &__panel{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: $cart-drawer;
+    max-width: 100%;
+    height: 100%;
+    padding: $gap-l $gap-m $gap-m;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    animation: slide-in-right $transition both;
+    @media (max-width: $mobile){
+      width: $cart-drawer-mobile;
+      padding: $gap-m $gap-s;
+    }
+  }
+  &__header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap-s;
+    margin-bottom: $gap-m;
+    h2{
+      font-weight: 500;
+      @include headline-6;
+      color: $n-7-color;
+    }
+  }
+  &__items{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  &__empty{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $gap-s;
+    @include caption-1;
+    color: $n-4-color;
+  }
+  &__summary{
+    display: flex;
+    flex-direction: column;
+    margin-top: $gap-m;
+  }
+  &__row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap-s;
+    padding: 12px 0px;
+    border-top: 1px solid $n-3-color;
+    span:first-child{
+      @include caption-1;
+      color: $n-5-color;
+    }
+    span:last-child{
+      font-weight: 600;
+      @include caption-1;
+      color: $n-7-color;
+    }
+    &-total{
+      span:first-child,
+      span:last-child{
+        font-weight: 600;
+        @include body-2;
+        color: $n-7-color;
+      }
+    }
+  }
+  &__checkout{
+    margin-top: $gap-xs;
+  }
+  &__view{
+    display: block;
+    margin: $gap-s auto 0;
+    font-weight: 500;
+    @include caption-1;
+    color: $n-7-color;
+    text-decoration: none;
+    border-bottom: 1px solid $n-7-color;
+    width: fit-content;
+    transition: opacity $transition;
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+}
+
+.cart-line{
+  display: grid;
+  grid-template-columns: $cart-thumb 1fr auto;
+  align-items: start;
+  gap: $gap-s;
+  padding: $gap-s 0px;
+  border-bottom: 1px solid $n-3-color;
+  animation: fade-in $transition both;
+  &__media{
+    width: $cart-thumb;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: $n-2-color;
+    img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+  }
+  &__body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $gap-xxs;
+    min-width: 0;
+  }
+  &__name{
+    font-weight: 600;
+    @include caption-1;
+    color: $n-7-color;
+  }
+  &__meta{
+    @include caption-2;
+    color: $n-4-color;
+  }
+  &__aside{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $gap-xs;
+  }
+  &__price{
+    font-weight: 600;
+    @include caption-1;
+    color: $n-7-color;
+  }
+  // Степер кількості з макета: рамка, мінус / число / плюс.
+  &__stepper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xs;
+    margin-top: $gap-xxs;
+    padding: 2px $gap-xs;
+    border: 1px solid $n-3-color;
+    border-radius: $radius-s;
+    button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $gap-s;
+      height: $gap-s;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1;
+      color: $n-7-color;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: opacity $transition;
+      &:hover{
+        opacity: 0.5;
+      }
+    }
+    span{
+      min-width: $gap-s;
+      font-weight: 600;
+      @include caption-2;
+      color: $n-7-color;
+      text-align: center;
+    }
+  }
+  &__remove img{
+    width: $gap-s;
+    height: $gap-s;
+  }
+}
+
+.cart-page{
+  padding: $gap-l 0px $section-y;
+  @media (max-width: $mobile){
+    padding: $gap-m 0px $section-y-mobile;
+  }
+  &__head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-xs;
+    margin-bottom: $gap-l;
+    text-align: center;
+    h1{
+      font-weight: 500;
+      @include headline-3;
+      color: $n-7-color;
+      @media (max-width: $mobile){
+        @include headline-5;
+      }
+    }
+  }
+  &__body{
+    display: grid;
+    grid-template-columns: 1fr $shop-drawer-summary;
+    align-items: start;
+    gap: $gap-l;
+    @media (max-width: $tablet){
+      grid-template-columns: 1fr;
+      gap: $gap-m;
+    }
+  }
+  &__items{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $n-3-color;
+  }
+  &__summary{
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+    padding: $gap-m;
+    border: 1px solid $n-3-color;
+    border-radius: $radius-s;
+    h2{
+      margin-bottom: $gap-xs;
+      font-weight: 600;
+      @include headline-7;
+      color: $n-7-color;
+    }
+  }
+  &__continue{
+    margin: $gap-xs auto 0;
+  }
+  &__empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-s;
+    padding: $section-y-mobile 0px;
+    @include body-2;
+    color: $n-4-color;
+  }
+}

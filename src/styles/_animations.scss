@@ -3,6 +3,10 @@
   from { transform: translateX(-100%); }
   to   { transform: none; }
 }
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: none; }
+}
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
