@@ -29,3 +29,9 @@ export const priceRanges = [
   { label: '$300.00 - 399.99', min: 300, max: 399.99 },
   { label: '$400.00+', min: 400, max: null }
 ];
+
+export const shippingOptions = [
+  { id: 'free', label: 'Free shipping', price: 0, note: '$0.00' },
+  { id: 'express', label: 'Express shipping', price: 15, note: '+$15.00' },
+  { id: 'pickup', label: 'Pick Up', price: 0, note: '%21.00' }
+];
