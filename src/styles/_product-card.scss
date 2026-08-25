@@ -1,0 +1,137 @@
+.product-card{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  &__media{
+    position: relative;
+    aspect-ratio: #{$ratio-product};
+    overflow: hidden;
+    background-color: $n-2-color;
+  }
+  &__img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    transition: transform $transition-slow;
+  }
+  &:hover &__img{
+    transform: scale(1.05);
+  }
+  &__badges{
+    position: absolute;
+    top: $gap-s;
+    left: $gap-s;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $gap-xs;
+  }
+  &__badge{
+    padding: 2px $gap-xs;
+    font-weight: 700;
+    @include caption-2;
+    color: $n-7-color;
+    background-color: $n-1-color;
+    border-radius: $radius-s;
+    &-sale{
+      color: $n-1-color;
+      background-color: $s-1-green-color;
+    }
+  }
+  &__wish{
+    position: absolute;
+    top: $gap-s;
+    right: $gap-s;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    background-color: $n-1-color;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translateY(-$gap-xs);
+    transition: opacity $transition, transform $transition;
+    img{
+      width: $gap-s;
+      height: $gap-s;
+    }
+    // На тач-екранах ховера немає — показуємо завжди.
+    @media (hover: none){
+      opacity: 1;
+      transform: none;
+    }
+  }
+  &:hover &__wish{
+    opacity: 1;
+    transform: none;
+  }
+  &__cart{
+    position: absolute;
+    left: $gap-s;
+    right: $gap-s;
+    bottom: $gap-s;
+    z-index: 1;
+    width: auto;
+    opacity: 0;
+    transform: translateY($gap-s);
+    transition: opacity $transition, transform $transition, background-color $transition;
+    @media (hover: none){
+      opacity: 1;
+      transform: none;
+    }
+  }
+  &:hover &__cart{
+    opacity: 1;
+    transform: none;
+  }
+  &__rating{
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    img{
+      width: $gap-s;
+      height: $gap-s;
+    }
+    &-off{
+      opacity: 0.25;
+    }
+  }
+  &__name{
+    font-weight: 600;
+    @include caption-1;
+    color: $n-7-color;
+  }
+  &__prices{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xs;
+  }
+  &__price{
+    font-weight: 600;
+    @include caption-1;
+    color: $n-7-color;
+  }
+  &__price-old{
+    font-weight: 400;
+    @include caption-1;
+    color: $n-4-color;
+    text-decoration: line-through;
+  }
+  // Режим списку на сторінці Shop.
+  &--list{
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-m;
+    .product-card__media{
+      flex: 0 0 200px;
+      aspect-ratio: 1 / 1;
+    }
+    .product-card__body{
+      display: flex;
+      flex-direction: column;
+      gap: $gap-xs;
+    }
+  }
+}

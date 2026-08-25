@@ -1,0 +1,51 @@
+.topbar{
+  background-color: $n-2-color;
+  animation: fade-in $transition-slow both;
+  &__content{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-s;
+    padding: $gap-xs 0px;
+  }
+  &__text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xs;
+    font-weight: 700;
+    @include caption-1;
+    color: $n-7-color;
+    img{
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__link{
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-xxs;
+    font-weight: 600;
+    @include caption-1;
+    color: $s-1-blue-color;
+    text-decoration: none;
+    border-bottom: 1px solid $s-1-blue-color;
+    transition: opacity $transition;
+    &:hover{
+      opacity: 0.7;
+    }
+    @media (max-width: $mobile){
+      display: none;
+    }
+  }
+  &__close{
+    position: absolute;
+    right: 0;
+    img{
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

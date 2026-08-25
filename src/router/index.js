@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AdminView from '@/views/AdminView.vue'
 import CatalogComponent from '@/components/Catalog/CatalogComponent.vue'
 import ShopView from '@/views/ShopView.vue'
+import CartView from '@/views/CartView.vue'
 
 
 const router = createRouter({
@@ -23,7 +24,11 @@ const router = createRouter({
       name: 'shop',
       component: ShopView
     },
-
+    {
+      path: '/cart',
+      name: 'cart',
+      component: CartView
+    },
     {
       path: '/catalog',
       name: 'catalog',

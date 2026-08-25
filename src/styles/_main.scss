@@ -1,13 +1,46 @@
 body{
-  font-family: "Roboto", sans-serif;
+  font-family: $font-family;
   background-color: #ffffff;
   color: $n-7-color;
   margin: 0;
 }
+h1, h2, h3, h4, p{
+  margin: 0;
+}
+img{
+  max-width: 100%;
+}
 .container{
-  max-width: 1120px;
-  padding: 0px 15px;
+  max-width: $container;
+  padding: 0px $gap-s;
   margin: 0 auto;
+  @media (max-width: $mobile){
+    padding: 0px $gap-ml;
+  }
+}
+.section{
+  padding: $section-y 0px;
+  @media (max-width: $mobile){
+    padding: $section-y-mobile 0px;
+  }
+  &__header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap-m;
+    margin-bottom: $gap-l;
+    @media (max-width: $mobile){
+      margin-bottom: $gap-m;
+    }
+  }
+  &__title{
+    @include headline-4;
+    font-weight: 500;
+    @media (max-width: $mobile){
+      @include headline-6;
+    }
+  }
 }
 .color-n4{
   color: $n-4-color;

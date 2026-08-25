@@ -1,13 +1,287 @@
 .shop-banner{
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-xs;
+    min-height: $shop-banner-h;
+    box-sizing: border-box;
+    padding: $gap-l $gap-m;
+    text-align: center;
+    background-color: $n-2-color;
+    background-image: url("/shop/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    @media (max-width: $mobile){
+      min-height: 308px;
+      padding: $gap-m $gap-s;
+    }
+  }
+  &__crumbs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xxs;
+    @include caption-1;
+    color: $n-4-color;
+    a{
+      color: $n-4-color;
+      text-decoration: none;
+      transition: color $transition;
+      &:hover{
+        color: $n-7-color;
+      }
+    }
+    img{
+      width: $gap-s;
+      height: $gap-s;
+    }
+    span{
+      font-weight: 600;
+      color: $n-7-color;
+    }
+  }
   h1{
-    font-size: 54px;
+    font-weight: 500;
+    @include headline-3;
     color: $n-7-color;
+    @media (max-width: $mobile){
+      @include headline-5;
+    }
   }
   h3{
-    font-size: 20px;
-    color: #121212;
+    max-width: 420px;
+    font-weight: 400;
+    @include body-1;
+    color: $n-5-color;
+    @media (max-width: $mobile){
+      @include caption-1;
+    }
   }
-  &__wrapper{
-    background-image: url("/public/shop/banner.jpg");
+}
+
+.shop{
+  display: grid;
+  grid-template-columns: $shop-sidebar 1fr;
+  gap: $gap-m;
+  padding: $gap-l 0px $section-y;
+  @media (max-width: $tablet){
+    grid-template-columns: 220px 1fr;
+  }
+  @media (max-width: $mobile){
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: $gap-m 0px $section-y-mobile;
+  }
+}
+
+.filter{
+  display: flex;
+  flex-direction: column;
+  gap: $gap-l;
+  &__toggle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    // На мобільному це кнопка-акордеон, на десктопі — просто заголовок.
+    @media (max-width: $mobile){
+      padding: 12px 0px;
+      border-top: 1px solid $n-3-color;
+      border-bottom: 1px solid $n-3-color;
+    }
+  }
+  &__heading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xs;
+    font-weight: 600;
+    @include headline-7;
+    color: $n-7-color;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    img{
+      width: $gap-m;
+      height: $gap-m;
+    }
+  }
+  &__body{
+    display: flex;
+    flex-direction: column;
+    gap: $gap-l;
+    @media (max-width: $mobile){
+      gap: $gap-m;
+      padding: $gap-m 0px;
+      // Панель фільтрів на мобільному розкривається під кнопкою.
+      animation: fade-in $transition both;
+    }
+  }
+  &__group-title{
+    margin-bottom: $gap-s;
+    font-weight: 700;
+    @include hairline-1;
+    color: $n-7-color;
+  }
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    // Прокрутка є лише у списку категорій — як у макеті.
+    &-scroll{
+      max-height: $filter-list-h;
+      overflow-y: auto;
+      @media (max-width: $mobile){
+        max-height: none;
+      }
+    }
+  }
+  &__item{
+    width: fit-content;
+    padding-bottom: 2px;
+    @include caption-1;
+    color: $n-4-color;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: color $transition, border-color $transition;
+    &:hover{
+      color: $n-7-color;
+    }
+    &-active{
+      font-weight: 600;
+      color: $n-7-color;
+      border-bottom-color: $n-7-color;
+    }
+  }
+  &__row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap-s;
+    @include caption-1;
+    color: $n-4-color;
+    cursor: pointer;
+    transition: color $transition;
+    &:hover{
+      color: $n-7-color;
+    }
+    input{
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      accent-color: $n-7-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.shop-catalog{
+  display: flex;
+  flex-direction: column;
+  gap: $gap-m;
+  &__toolbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap-s;
+  }
+  &__title{
+    font-weight: 500;
+    @include headline-7;
+    color: $n-7-color;
+    @media (max-width: $mobile){
+      @include caption-1;
+      font-weight: 600;
+    }
+  }
+  &__controls{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-m;
+  }
+  &__sort{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $gap-xxs;
+    @include caption-1;
+    color: $n-7-color;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    img{
+      width: $gap-s;
+      height: $gap-s;
+      transition: transform $transition;
+    }
+    &:hover img{
+      transform: translateY(2px);
+    }
+  }
+  &__views{
+    display: flex;
+    flex-direction: row;
+    gap: $gap-xs;
+  }
+  &__view{
+    display: flex;
+    padding: $gap-xxs;
+    background-color: transparent;
+    border: none;
+    border-radius: $radius-s;
+    opacity: 0.35;
+    cursor: pointer;
+    transition: opacity $transition, background-color $transition;
+    &:hover{
+      opacity: 0.7;
+    }
+    &-active{
+      opacity: 1;
+      background-color: $n-2-color;
+    }
+    img{
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__grid{
+    display: grid;
+    gap: $gap-m;
+    grid-template-columns: repeat(var(--shop-columns, 3), 1fr);
+    @media (max-width: $tablet){
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $mobile){
+      grid-template-columns: repeat(2, 1fr);
+      gap: $gap-xxs;
+    }
+    &-list{
+      grid-template-columns: 1fr;
+      @media (max-width: $mobile){
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+  &__more{
+    display: flex;
+    justify-content: center;
+    margin-top: $gap-m;
+  }
+  &__empty{
+    padding: $gap-l 0px;
+    @include caption-1;
+    color: $n-4-color;
   }
 }

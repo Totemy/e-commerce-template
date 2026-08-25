@@ -1,0 +1,6 @@
+// Утиліти імпортуються останніми, щоб виграти за порядком у каскаді.
+.only-desktop{
+  @media (max-width: $mobile){
+    display: none;
+  }
+}

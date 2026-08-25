@@ -1,0 +1,35 @@
+// Мінімальні анімації. Усе вимикається за prefers-reduced-motion.
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to   { transform: none; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// Плавна поява секції. Класи ставить директива v-reveal.
+// Свідомо на transition, а не на animation: кінцевий стан описаний
+// декларативно, тож елемент не залишиться прихованим, якщо анімація
+// не відіграє (фонова вкладка, друк тощо).
+.reveal{
+  opacity: 0;
+  transform: translateY($gap-m);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  &.is-visible{
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

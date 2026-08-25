@@ -27,6 +27,10 @@ const categoryName = ref('');
 const categoryImage = ref('');
 
 const addCategory = async () => {
+  if (!database) {
+    console.error('Firebase is not configured (see .env.example)');
+    return;
+  }
   if (!categoryName.value) {
     console.error('Category name cannot be empty');
     return;
