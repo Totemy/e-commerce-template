@@ -1,9 +1,8 @@
-// Кадри Figma: 1440 (desktop) і 375 (mobile).
+// Figma frames: 1440 desktop, 375 mobile.
 $container: 1120px;
 $tablet: 1023px;
 $mobile: 767px;
 
-// Відступи — крок 8px, як у макеті.
 $gap-xxs: 4px;
 $gap-xs: 8px;
 $gap-s: 16px;
@@ -17,7 +16,6 @@ $section-y-mobile: 48px;
 $radius-s: 4px;
 $radius-pill: 80px;
 
-// Розміри з макета, які не виражаються пропорцією.
 $opportunity-h: 219px;
 $opportunity-h-mobile: 195px;
 $shop-banner-h: 396px;
@@ -26,19 +24,15 @@ $newsletter-h-mobile: 362px;
 $shop-sidebar: 262px;
 $filter-list-h: 204px;
 
-// Flyout Cart з макета: 390 на десктопі, 342 на мобільному.
 $cart-drawer: 390px;
 $cart-drawer-mobile: 342px;
 $cart-thumb: 80px;
-// Cart / CheckOut / Order Complete з макета.
 $checkout-summary: 411px;
 $steps-max: 832px;
 $step-circle: 32px;
 $order-card: 740px;
-// Ширина картки в мобільній каруселі New Arrivals (231 з 311 у макеті).
 $arrivals-card-mobile: 74%;
 
-// Пропорції карток замість фіксованих висот.
 $ratio-hero: '1120 / 544';
 $ratio-hero-mobile: '311 / 308';
 $ratio-category-lg: '548 / 660';

@@ -51,7 +51,6 @@
     overflow: hidden;
     background-color: $n-2-color;
     aspect-ratio: #{$ratio-category-sm};
-    // Велика картка ліворуч займає обидва рядки.
     &:nth-child(1){
       grid-row: span 2;
       aspect-ratio: #{$ratio-category-lg};
@@ -73,15 +72,12 @@
     object-position: right bottom;
     transition: transform $transition-slow;
   }
-  // Велика картка: заголовок зверху, зображення знизу.
   &__item:nth-child(1) &__img{
     inset: auto 0 0 0;
     height: 76%;
-    // Джерелом може бути і фото кімнати, і вирізаний товар — cover тримає обидва випадки.
     object-fit: cover;
     object-position: center;
   }
-  // Малі картки: заголовок ліворуч, зображення праворуч.
   &__item:nth-child(n+2) &__img{
     inset: 0 0 0 auto;
     width: 52%;

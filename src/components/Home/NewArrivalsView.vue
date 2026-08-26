@@ -32,7 +32,6 @@ const track = ref(null);
 const scrollRatio = ref(0);
 const visibleRatio = ref(0.25);
 
-// Демо-товари з макета, поки колекція products порожня.
 const fallbackProducts = [
   { id: 'loveseat-sofa', name: 'Loveseat Sofa', price: 199, oldPrice: 400, isNew: true, image: '/gallery/1.jpg' },
   { id: 'table-lamp', name: 'Table Lamp', price: 24.99, isNew: true, image: '/gallery/2.jpg' },

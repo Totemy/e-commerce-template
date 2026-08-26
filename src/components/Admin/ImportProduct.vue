@@ -66,7 +66,6 @@ const addProduct = async () => {
   }
 };
 
-// get category from Firebase
 const categories = ref([]);
 const fetchCategories = async () => {
   if (!database) return;

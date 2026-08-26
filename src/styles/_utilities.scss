@@ -1,4 +1,4 @@
-// Утиліти імпортуються останніми, щоб виграти за порядком у каскаді.
+// Imported last so these utilities win on cascade order.
 .only-desktop{
   @media (max-width: $mobile){
     display: none;

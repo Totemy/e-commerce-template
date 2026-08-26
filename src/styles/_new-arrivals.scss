@@ -29,7 +29,7 @@
     }
   }
   &__item{
-    // Чотири картки на десктопі, ~1.75 на мобільному — без фіксованої ширини.
+    // Four cards on desktop, ~1.75 on mobile, without a fixed width.
     flex: 0 0 calc((100% - 3 * #{$gap-m}) / 4);
     scroll-snap-align: start;
     @media (max-width: $tablet){

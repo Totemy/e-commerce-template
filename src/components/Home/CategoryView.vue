@@ -25,8 +25,6 @@ import { collection, onSnapshot } from 'firebase/firestore'
 import { database } from '@/firebase.js'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 const categories = ref([]);
-// Поки Firestore порожній (або без .env), показуємо категорії з макета,
-// щоб сітка не була пустою.
 const fallbackCategories = [
   { id: 'living-room', name: 'Living Room', image: '/gallery/1.jpg' },
   { id: 'bedroom', name: 'Bedroom', image: '/gallery/2.jpg' },

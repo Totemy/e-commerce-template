@@ -9,7 +9,6 @@
   @media (max-width: $mobile){
     min-height: $newsletter-h-mobile;
   }
-  // Бокові зображення з макета — декор, на мобільному ховаються.
   &__aside{
     position: absolute;
     top: 0;

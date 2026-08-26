@@ -37,7 +37,6 @@
         font-weight: 400;
         @include caption-1;
         color: $n-3-color;
-        // Розділювач: вертикальний на десктопі, горизонтальний під логотипом на мобільному.
         &:before{
           content: '';
           position: absolute;
@@ -90,13 +89,13 @@
     padding-top: $gap-s;
     border-top: 1px solid $n-6-color;
     @media (max-width: $mobile){
-      // У макеті на мобільному соцмережі стоять над юридичними лінками.
+      // Design puts socials above the legal links on mobile.
       flex-direction: column-reverse;
       gap: $gap-m;
       padding-top: $gap-m;
     }
   }
-  // Порядок у макеті: на десктопі копірайт ліворуч, на мобільному — під лінками.
+  // Desktop: copyright on the left. Mobile: copyright below the links.
   &__legal{
     display: flex;
     flex-direction: row-reverse;

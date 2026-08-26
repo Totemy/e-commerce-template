@@ -5,8 +5,7 @@ const STORAGE_KEY = '3legant.cart';
 const ORDER_KEY = '3legant.lastOrder';
 const SHIPPING_KEY = '3legant.shipping';
 
-// localStorage може бути недоступний (приватний режим, вимкнені куки) —
-// тоді кошик просто працює в межах сесії.
+// localStorage can be unavailable (private mode); the cart still works for the session.
 const read = (key, fallback) => {
   try {
     const raw = window.localStorage.getItem(key);
@@ -21,7 +20,7 @@ const write = (key, value) => {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    // Немає де зберігати — не критично.
+    // Storage unavailable — ignore.
   }
 };
 
@@ -74,8 +73,7 @@ export const useCartStore = defineStore('cart', {
       this.items = this.items.filter(item => item.id !== id);
       this.save();
     },
-    // Оформлення замовлення: знімок кошика лишається, щоб сторінка
-    // Order Complete могла його показати навіть після перезавантаження.
+    // The order snapshot survives so Order Complete works after a reload.
     placeOrder(){
       if (this.isEmpty) return null;
       const order = {

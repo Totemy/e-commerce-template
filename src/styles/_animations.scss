@@ -1,4 +1,3 @@
-// Мінімальні анімації. Усе вимикається за prefers-reduced-motion.
 @keyframes slide-in-left {
   from { transform: translateX(-100%); }
   to   { transform: none; }
@@ -12,10 +11,8 @@
   to   { opacity: 1; }
 }
 
-// Плавна поява секції. Класи ставить директива v-reveal.
-// Свідомо на transition, а не на animation: кінцевий стан описаний
-// декларативно, тож елемент не залишиться прихованим, якщо анімація
-// не відіграє (фонова вкладка, друк тощо).
+// Transition, not animation: toggling .is-visible is enough to reach the
+// end state, so there is no animation to get stuck mid-run or skipped.
 .reveal{
   opacity: 0;
   transform: translateY($gap-m);

@@ -15,7 +15,6 @@ export const useFiltersStore = defineStore('filters', {
     }
   },
   getters:{
-    // Повертає предикат, щоб каталог сам відфільтрував свій список.
     matches: (state) => (product) => {
       const { activeCategoryId, activeRange } = state;
       if (activeCategoryId && product.categoryId !== activeCategoryId) return false;

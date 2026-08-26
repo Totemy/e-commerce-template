@@ -1,11 +1,8 @@
 /* eslint-disable */
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported as isAnalyticsSupported } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey:  import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -16,8 +13,7 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Without a .env the config values are undefined and the SDK throws on init,
-// which would stop the whole app from mounting. Boot without Firebase instead.
+// Without env vars the SDK throws on init and the app never mounts, so boot without Firebase instead.
 const isFirebaseConfigured = Boolean(
   firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId
 );
@@ -28,9 +24,7 @@ let database = null;
 
 if (isFirebaseConfigured) {
   firebaseApp = initializeApp(firebaseConfig);
-  // Initialize Cloud Firestore and get a reference to the service
   database = getFirestore(firebaseApp);
-  // Analytics needs measurementId and a supported browser environment
   if (firebaseConfig.measurementId) {
     isAnalyticsSupported()
       .then((supported) => {

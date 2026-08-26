@@ -41,7 +41,6 @@ import PriceFilterComponent from '@/components/Shop/PriceFilterComponent.vue'
 const store = useCategoriesStore();
 const filters = useFiltersStore();
 const open = ref(false);
-// На десктопі панель завжди розкрита, на мобільному — за кнопкою Filter.
 const isDesktop = ref(true);
 
 const updateViewport = () => {

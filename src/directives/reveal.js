@@ -1,9 +1,5 @@
-// v-reveal: секція плавно з'являється, коли вперше входить у в'юпорт.
-// Сама анімація описана в styles/_animations.scss.
-//
-// Важливо: елемент ніколи не має лишитись прихованим. Тому анімація
-// вмикається лише для того, що на момент монтування ще нижче екрана,
-// плюс є страховка по таймеру, якщо IntersectionObserver не спрацює.
+// A safety timer forces the fade-in even if IntersectionObserver never fires
+// (e.g. a background tab), so an element can never stay stuck at opacity 0.
 const SAFETY_DELAY = 1500;
 
 const show = (el) => {
@@ -24,7 +20,6 @@ export const reveal = {
   mounted(el) {
     const belowFold = el.getBoundingClientRect().top > window.innerHeight;
     if (!observer || !belowFold) {
-      // Уже видно (або немає підтримки) — показуємо без анімації.
       el.classList.add('reveal', 'is-visible');
       return;
     }

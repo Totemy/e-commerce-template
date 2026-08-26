@@ -84,10 +84,7 @@
                 </label>
               </div>
 
-              <!--
-                Демо-макет форми оплати. Поля нікуди не надсилаються і не
-                зберігаються: submit лише формує локальний запис замовлення.
-              -->
+              <!-- Demo payment form: fields are not sent or stored, submit only records a local order. -->
               <template v-if="form.payment === 'card'">
                 <div class="form-card__divider"></div>
                 <div class="form-card__grid">
@@ -175,7 +172,7 @@ const subtotal = computed(() => cart.subtotal.toFixed(2));
 const total = computed(() => cart.total.toFixed(2));
 const shippingLabel = computed(() => cart.shippingCost ? '$' + cart.shippingCost.toFixed(2) : 'Free');
 
-// Спосіб доставки обирається на сторінці Cart, тут лише показуємо підсумок.
+// Shipping is chosen on the Cart page; this view only displays the total.
 const submit = () => {
   const order = cart.placeOrder();
   if (order) router.push('/order-complete');

@@ -151,7 +151,6 @@
     @include caption-1;
     color: $n-7-color;
   }
-  // Степер кількості з макета: рамка, мінус / число / плюс.
   &__stepper{
     display: flex;
     flex-direction: row;
@@ -194,7 +193,6 @@
 }
 
 
-// Сторінка Cart: таблиця Product / Quantity / Price / Subtotal.
 .cart-table{
   &__head{
     display: grid;
@@ -280,7 +278,6 @@
     font-weight: 600;
     text-align: right;
   }
-  // На мобільному степер ліворуч, сума праворуч, ціна за штуку ховається.
   &__row .cart-line__stepper{
     justify-self: center;
     margin-top: 0;
