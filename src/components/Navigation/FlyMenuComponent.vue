@@ -18,11 +18,11 @@
           Shop
           <img src="/icons/chevron-down.svg" alt="" />
         </router-link>
-        <router-link class="fly-menu__link" to="/catalog" @click="$emit('close')">
+        <router-link class="fly-menu__link" to="/product/tray-table" @click="$emit('close')">
           Product
           <img src="/icons/chevron-down.svg" alt="" />
         </router-link>
-        <router-link class="fly-menu__link" to="/catalog" @click="$emit('close')">Contact Us</router-link>
+        <router-link class="fly-menu__link" to="/contact" @click="$emit('close')">Contact Us</router-link>
         <router-link class="fly-menu__link" to="/admin" @click="$emit('close')">Admin</router-link>
       </nav>
       <div class="fly-menu__spacer"></div>
@@ -33,15 +33,15 @@
           <span class="navbar__count" v-if="cart.count">{{ cart.count }}</span>
         </span>
       </button>
-      <div class="fly-menu__row">
+      <router-link class="fly-menu__row" to="/account/wishlist" @click="$emit('close')">
         Wishlist
         <span class="fly-menu__row-icons">
           <img src="/icons/heart.svg" alt="wishlist" />
-          <span class="navbar__count">2</span>
+          <span class="navbar__count" v-if="wishlist.count">{{ wishlist.count }}</span>
         </span>
-      </div>
+      </router-link>
       <div class="fly-menu__signin">
-        <button class="btn btn__primary">Sign In</button>
+        <button class="btn btn__primary" type="button" @click="openSignIn">Sign In</button>
       </div>
       <div class="fly-menu__socials">
         <img src="/icons/instagram.svg" alt="instagram" />
@@ -53,12 +53,20 @@
 </template>
 <script setup>
 import { useCartStore } from '@/store/modules/cart.js'
+import { useWishlistStore } from '@/store/modules/wishlist.js'
+import { useAuthModalStore } from '@/store/modules/authModal.js'
 
 const emit = defineEmits(['close']);
 const cart = useCartStore();
+const wishlist = useWishlistStore();
+const auth = useAuthModalStore();
 
 const openCart = () => {
   emit('close');
   cart.open();
+};
+const openSignIn = () => {
+  emit('close');
+  auth.open('signin');
 };
 </script>

@@ -1,0 +1,251 @@
+.account-page{
+  padding: $gap-l 0px $section-y;
+  @media (max-width: $mobile){
+    padding: $gap-m 0px $section-y-mobile;
+  }
+  h1{
+    margin-bottom: $gap-l;
+    font-weight: 500;
+    @include headline-3;
+    color: $n-7-color;
+    text-align: center;
+    @media (max-width: $mobile){
+      @include headline-5;
+      margin-bottom: $gap-m;
+    }
+  }
+  &__body{
+    display: grid;
+    grid-template-columns: $shop-sidebar 1fr;
+    align-items: start;
+    gap: $gap-m;
+    @media (max-width: $tablet){
+      grid-template-columns: 220px 1fr;
+    }
+    @media (max-width: $mobile){
+      grid-template-columns: 1fr;
+    }
+  }
+  &__panel{
+    display: flex;
+    flex-direction: column;
+    gap: $gap-s;
+    h2{
+      margin-top: $gap-s;
+      font-weight: 500;
+      @include headline-7;
+      color: $n-7-color;
+      &:first-child{
+        margin-top: 0;
+      }
+    }
+  }
+  &__hint{
+    display: block;
+    margin-top: $gap-xxs;
+    @include caption-2;
+    color: $n-4-color;
+  }
+  &__save{
+    width: fit-content;
+    padding-left: $gap-l;
+    padding-right: $gap-l;
+  }
+}
+
+.account-sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-s;
+  padding: $gap-m;
+  background-color: $n-2-color;
+  &__avatar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    font-weight: 600;
+    @include headline-7;
+    color: $n-5-color;
+    background-color: $n-3-color;
+    border-radius: 50%;
+    &-edit{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background-color: $n-7-color;
+      border: 2px solid $n-1-color;
+      border-radius: 50%;
+      cursor: pointer;
+      img{
+        width: $gap-s;
+        height: $gap-s;
+        filter: invert(1);
+      }
+    }
+  }
+  &__name{
+    font-weight: 600;
+    @include caption-1;
+    color: $n-7-color;
+  }
+  &__nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-s;
+    width: 100%;
+    padding-top: $gap-s;
+    border-top: 1px solid $n-3-color;
+  }
+  &__link{
+    @include caption-1;
+    color: $n-4-color;
+    text-decoration: none;
+    transition: color $transition;
+    &:hover{
+      color: $n-7-color;
+    }
+    &-active{
+      font-weight: 600;
+      color: $n-7-color;
+    }
+  }
+}
+
+.password-field{
+  position: relative;
+  input{
+    padding-right: 44px;
+  }
+}
+.password-field__toggle{
+  position: absolute;
+  right: $gap-s;
+  bottom: 12px;
+  display: flex;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  img{
+    width: $gap-s;
+    height: $gap-s;
+  }
+}
+
+.address-cards{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gap-s;
+  @media (max-width: $mobile){
+    grid-template-columns: 1fr;
+  }
+}
+.address-card{
+  padding: $gap-s;
+  border: 1px solid $n-3-color;
+  border-radius: $radius-s;
+  &__head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $gap-xs;
+    h4{
+      font-weight: 600;
+      @include caption-1;
+      color: $n-7-color;
+    }
+  }
+  &__edit{
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-xxs;
+    padding: 0;
+    @include caption-2;
+    color: $n-4-color;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color $transition;
+    &:hover{
+      color: $n-7-color;
+    }
+    img{
+      width: 14px;
+      height: 14px;
+    }
+  }
+  p{
+    @include caption-1;
+    color: $n-5-color;
+  }
+}
+
+.orders-table{
+  width: 100%;
+  border-collapse: collapse;
+  th{
+    padding-bottom: $gap-s;
+    font-weight: 600;
+    @include caption-2;
+    color: $n-4-color;
+    text-align: left;
+    border-bottom: 1px solid $n-3-color;
+  }
+  td{
+    padding: $gap-s 0px;
+    @include caption-1;
+    color: $n-7-color;
+    border-bottom: 1px solid $n-3-color;
+  }
+  @media (max-width: $mobile){
+    th:nth-child(2),
+    td:nth-child(2){
+      display: none;
+    }
+  }
+}
+
+.wishlist-table{
+  td:first-child{
+    width: 60%;
+  }
+}
+.wishlist-table__product{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $gap-s;
+}
+.wishlist-table__remove{
+  flex: 0 0 auto;
+  display: flex;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity $transition;
+  &:hover{
+    opacity: 1;
+  }
+  img{
+    width: $gap-s;
+    height: $gap-s;
+  }
+}
+.wishlist-table__add{
+  width: auto;
+  white-space: nowrap;
+  padding: $gap-xs $gap-s;
+}

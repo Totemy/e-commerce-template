@@ -13,9 +13,9 @@
         <nav class="footer__links">
           <router-link to="/">Home</router-link>
           <router-link to="/shop">Shop</router-link>
-          <router-link to="/catalog">Product</router-link>
-          <router-link to="/catalog">Blog</router-link>
-          <router-link to="/catalog">Contact Us</router-link>
+          <router-link to="/product/tray-table">Product</router-link>
+          <router-link to="/blog">Blog</router-link>
+          <router-link to="/contact">Contact Us</router-link>
         </nav>
       </div>
       <div class="footer__bottom">

@@ -1,5 +1,4 @@
-// На мобільному хедер закріплений, щоб бургер і кошик були доступні
-// з будь-якої точки сторінки.
+// Sticky on mobile so the burger and cart stay reachable while scrolling.
 .header{
   @media (max-width: $mobile){
     position: sticky;
@@ -221,6 +220,7 @@
     background-color: transparent;
     border: none;
     text-align: left;
+    text-decoration: none;
     cursor: pointer;
     transition: opacity $transition;
     &:hover{
