@@ -8,6 +8,11 @@
     overflow: hidden;
     background-color: $n-2-color;
   }
+  &__media > a{
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
   &__img{
     width: 100%;
     height: 100%;
@@ -56,13 +61,17 @@
       width: $gap-s;
       height: $gap-s;
     }
-    // На тач-екранах ховера немає — показуємо завжди.
+    // Touch devices have no hover, so keep it visible.
     @media (hover: none){
       opacity: 1;
       transform: none;
     }
   }
   &:hover &__wish{
+    opacity: 1;
+    transform: none;
+  }
+  &__wish-active{
     opacity: 1;
     transform: none;
   }
@@ -98,9 +107,15 @@
     }
   }
   &__name{
+    display: block;
     font-weight: 600;
     @include caption-1;
     color: $n-7-color;
+    text-decoration: none;
+    transition: color $transition;
+    &:hover{
+      color: $n-4-color;
+    }
   }
   &__prices{
     display: flex;
@@ -119,7 +134,6 @@
     color: $n-4-color;
     text-decoration: line-through;
   }
-  // Режим списку на сторінці Shop.
   &--list{
     flex-direction: row;
     align-items: center;

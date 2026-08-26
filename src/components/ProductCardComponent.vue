@@ -5,10 +5,17 @@
         <span class="product-card__badge" v-if="product.isNew">NEW</span>
         <span class="product-card__badge product-card__badge-sale" v-if="discount">-{{ discount }}%</span>
       </div>
-      <button class="btn btn__icon product-card__wish" aria-label="Add to wishlist">
-        <img src="/icons/heart.svg" alt="" />
+      <button
+        class="btn btn__icon product-card__wish"
+        :class="{ 'product-card__wish-active': inWishlist }"
+        aria-label="Add to wishlist"
+        @click="wishlist.toggle(product)"
+      >
+        <img :src="inWishlist ? '/icons/heart-filled.svg' : '/icons/heart.svg'" alt="" />
       </button>
-      <img class="product-card__img" :src="image" :alt="product.name" />
+      <router-link :to="`/product/${product.id}`">
+        <img class="product-card__img" :src="image" :alt="product.name" />
+      </router-link>
       <button class="btn btn__primary product-card__cart" @click="addToCart">Add to cart</button>
     </div>
     <div class="product-card__body">
@@ -21,7 +28,7 @@
           alt=""
         />
       </div>
-      <h3 class="product-card__name">{{ product.name }}</h3>
+      <router-link class="product-card__name" :to="`/product/${product.id}`">{{ product.name }}</router-link>
       <div class="product-card__prices">
         <span class="product-card__price">${{ price }}</span>
         <span class="product-card__price-old" v-if="product.oldPrice">${{ oldPrice }}</span>
@@ -32,6 +39,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useCartStore } from '@/store/modules/cart.js'
+import { useWishlistStore } from '@/store/modules/wishlist.js'
 
 const props = defineProps({
   product: {
@@ -44,13 +52,14 @@ const props = defineProps({
   }
 });
 
-// Firestore зберігає одне поле image, макет і сід-дані — масив images.
 const image = computed(() => {
   if (props.product.image) return props.product.image;
   if (Array.isArray(props.product.images)) return props.product.images[0];
   return '';
 });
 const cart = useCartStore();
+const wishlist = useWishlistStore();
+const inWishlist = computed(() => wishlist.has(props.product.id));
 
 const addToCart = () => {
   cart.add(props.product);
