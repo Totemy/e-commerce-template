@@ -30,6 +30,8 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    color: inherit;
+    text-decoration: none;
     &:hover .blog-section__img img{
       transform: scale(1.05);
     }

@@ -1,4 +1,3 @@
-// Спільна обгортка для Cart / Check Out / Order Complete.
 .checkout{
   padding: $gap-l 0px $section-y;
   @media (max-width: $mobile){
@@ -40,7 +39,6 @@
   }
 }
 
-// Індикатор кроків: гальочка на пройдених, смуга під пройденим і активним.
 .steps{
   display: flex;
   flex-direction: row;
@@ -101,7 +99,6 @@
     background-color: transparent;
     transition: background-color $transition;
   }
-  // Активний крок — темний, пройдений — зелений.
   &__item-active{
     .steps__num{
       color: $n-1-color;
@@ -130,7 +127,6 @@
   }
 }
 
-// Картка-секція форми (Contact Information, Shipping Address, Payment method).
 .form-card{
   padding: $gap-m;
   border: 1px solid $n-3-color;
@@ -175,7 +171,8 @@
     color: $n-4-color;
   }
   input,
-  select{
+  select,
+  textarea{
     width: 100%;
     padding: 12px $gap-s;
     box-sizing: border-box;
@@ -204,7 +201,6 @@
   }
 }
 
-// Радіо-рядок у рамці (спосіб доставки, спосіб оплати).
 .option-row{
   display: flex;
   flex-direction: row;
@@ -262,7 +258,6 @@
   }
 }
 
-// Права колонка: Cart summary / Order summary.
 .summary{
   display: flex;
   flex-direction: column;
@@ -323,7 +318,6 @@
   }
 }
 
-// Купон: інпут з іконкою і кнопкою Apply.
 .coupon{
   &__title{
     font-weight: 500;
@@ -389,7 +383,6 @@
   }
 }
 
-// Order Complete.
 .order-complete{
   display: flex;
   flex-direction: column;
